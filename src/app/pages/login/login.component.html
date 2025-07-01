@@ -1,0 +1,30 @@
+<main>
+  <div class="login-container">
+    <div class="bokeh-background">
+      <div class="bokeh"></div>
+      <div class="bokeh"></div>
+      <div class="bokeh"></div>
+      <div class="bokeh"></div>
+      <div class="bokeh"></div>
+    </div>
+
+    <div class="login-card">
+      <h2>Login Page</h2>
+      <div>
+        <input
+          [(ngModel)]="loginObj.username"
+          type="email"
+          placeholder="Email"
+          required
+        />
+        <input
+          [(ngModel)]="loginObj.password"
+          type="password"
+          placeholder="Password"
+          required
+        />
+        <button (click)="loginHandler()" type="submit">Enter</button>
+      </div>
+    </div>
+  </div>
+</main>
