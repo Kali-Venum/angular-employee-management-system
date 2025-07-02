@@ -14,21 +14,23 @@ export class LoginComponent {
   router = inject(Router);
 
   loginObj: any = {
-    username: '',
+    emial: '',
     password: '',
   };
 
   loginHandler() {
-    this.http.post('https://dummyjson.com/auth/login', this.loginObj).subscribe(
-      (res: any) => {
-        if (res?.id) {
-          localStorage.setItem('user', JSON.stringify(res));
-          this.router.navigateByUrl('dashboard');
+    this.http
+      .post('http://localhost:9000/emp/api/v1/auth/signin', this.loginObj)
+      .subscribe(
+        (response: any) => {
+          if (response?.id) {
+            localStorage.setItem('user', JSON.stringify(response));
+            this.router.navigateByUrl('dashboard');
+          }
+        },
+        (error) => {
+          alert(error.error.message);
         }
-      },
-      (error) => {
-        alert(error.error.message);
-      }
-    );
+      );
   }
 }
